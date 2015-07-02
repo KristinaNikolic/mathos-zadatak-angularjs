@@ -1,0 +1,20 @@
+<div class="content">
+	<h1>{{title}}</h1>
+	<ul>
+		<li ng-repeat="item in items">
+			<div ng-include="'app/question-list/question-list.html'"></div>
+			
+			
+			<all-answers
+					answerA="{{item.answers[0].answer}}"
+					answerB="{{item.answers[1].answer}}"
+					answerC="{{item.answers[2].answer}}"
+					totalA="{{totalA}}"
+					totalB="{{totalB}}"
+					totalC="{{totalC}}"
+					optionA="optionA()"
+					optionB="optionB()"
+					optionC="optionC()"
+					winner = "winner()"> </all-answers>
+		</li>
+</div>

@@ -1,0 +1,20 @@
+<div class="content">
+	<h1> {{item.question}} </h1>
+	
+	<div>
+		<h3> {{item.description}} </h3>
+	</div>
+	
+	
+	<second-directive
+			answerA="{{answerA}}"
+			answerB="{{answerB}}"
+			answerC="{{answerC}}"
+			totalA="{{totalA}}"
+			totalB="{{totalB}}"
+			totalC="{{totalC}}"
+			optionA="optionA()"
+			optionB="optionB()"
+			optionC="optionC()"
+			winner = "winner()"> </second-directive>
+</div>

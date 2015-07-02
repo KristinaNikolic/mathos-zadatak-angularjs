@@ -4,29 +4,42 @@
 		<meta charset="utf-8"/>
 	    <title>AngularJS zadaca mathos</title>
 	    <meta name="viewport" content="width=device-width" />
+		
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+  		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>	
+		  
+		<script src="app/app.module.js"></script>
+		<script src="app/app.config.js"></script>
+		<script src="app/poll/poll.controller.js"></script>
+		<script src="app/question-list/question-list.controller.js"></script>
+		<script src="app/question-list/question-list.service.js"></script>
+		<script src="app/question/question.controller.js"></script>
+		<script src="app/question/question-one.controller.js"></script>
+		<script src="app/question/question-two.controller.js"></script>
+		<script src="app/question/all-questions.controller.js"></script>
+		<script src="app/components/directives/first-directive/first-directive.directive.js"></script>
+		<script src="app/components/directives/second-directive/second-directive.directive.js"></script>
+		<script src="app/components/directives/all-answers/all-answers.directive.js"></script>
 	    <link rel="stylesheet" href="app/app.css">
 	</head>
 
 	<body>
 		
-		<div ng-controller='MainController'>
-			<h3> {{title}} </h3>
-			<button ng-click="optionA()"> {{answerA}} </button>
-			<button ng-click="optionB()"> {{answerB}} </button>
-			<button ng-click="optionC()"> {{answerC}} </button>
-			
-			<br/> <br/>
-			<p> Total votes "{{answerA}}" : {{totalA}} </p>
-			<p> Total votes "{{answerB}}" : {{totalB}} </p>
-			<p> Total votes "{{answerC}}" : {{totalC}} </p>
-			
-			<p> Winning option : <strong> {{winner() | uppercase}} </strong> </p>
-				
-		</div>
+		<nav>
+			<div class="navigation">
+				<ul>
+					<li><a href="#">Question List</a></li>
+					<li><a href="#first">Question One</a></li>
+					<li><a href="#second">Question Two</a></li>
+					<li><a href="#all">All Questions</a></li>
+				</ul>
+			</div>
+		</nav>
 		
-		<script src="https://code.angularjs.org/1.4.0/angular.js"></script>
-	    <script src="https://code.angularjs.org/1.4.0/angular-route.min.js"></script>
-	    <script src="app/app.module.js"></script>
-		<script src="app/poll/poll.controller.js"></script>
+		<div id="main">
+			<div ng-view=""></div>
+		</div>
+	    
 	</body>
 </html>

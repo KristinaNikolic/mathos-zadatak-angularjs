@@ -1,10 +1,17 @@
-angular.module('poll')
-	.controller('MainController2', ['$scope', '$timeout', function ($scope, $timeout) {
-		$scope.title = 'Please, choose one of the options.';
-		$scope.answerA = 'Option A';
-		$scope.answerB = 'Option B';
-		$scope.answerC = 'Option C';
-		
+angular.module('poll')		
+	.controller('FirstController', ['$scope', 'itemService', function ($scope, itemService) {
+		itemService.getItems()
+			.success (function (response) {
+				$scope.item = response.item[0];
+				$scope.answerA = response.item[0].answers[0];
+				$scope.answerB = response.item[0].answers[1];
+				$scope.answerC = response.item[0].answers[2];
+				$scope.title = 'Question One';
+			})
+			.error (function (response) {
+				$scope.title = 'Failed';
+			});
+			
 		$scope.totalA = 0;
 		$scope.totalB = 0;
 		$scope.totalC = 0;
@@ -39,4 +46,4 @@ angular.module('poll')
 			$scope.totalC = $scope.totalC + 1;
 		};
 		
-	}]);
+}]);

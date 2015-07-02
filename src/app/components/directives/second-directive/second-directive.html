@@ -1,0 +1,12 @@
+<button ng-click="optionA()">{{answerA.answer}}</button>
+<button ng-click="optionB()">{{answerB.answer}}</button>
+<button ng-click="optionC()">{{answerC.answer}}</button>
+<br/>
+<br/>
+
+<p>Total votes "{{answerA.answer}}" : {{totalA}}</p>
+<p>Total votes "{{answerB.answer}}" : {{totalB}}</p>
+<p>Total votes "{{answerC.answer}}" : {{totalC}}</p>
+<p>Winning option :
+	<strong>{{winner() | uppercase}}</strong>
+</p>
