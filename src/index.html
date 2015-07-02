@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="poll">
+	<head>
+		<meta charset="utf-8"/>
+	    <title>AngularJS zadaca mathos</title>
+	    <meta name="viewport" content="width=device-width" />
+	    <link rel="stylesheet" href="app/app.css">
+	</head>
+
+	<body>
+		
+		<div ng-controller='MainController'>
+			<h3> {{title}} </h3>
+			<button ng-click="optionA()"> {{answerA}} </button>
+			<button ng-click="optionB()"> {{answerB}} </button>
+			<button ng-click="optionC()"> {{answerC}} </button>
+			
+			<br/> <br/>
+			<p> Total votes "{{answerA}}" : {{totalA}} </p>
+			<p> Total votes "{{answerB}}" : {{totalB}} </p>
+			<p> Total votes "{{answerC}}" : {{totalC}} </p>
+			
+			<p> Winning option : <strong> {{winner() | uppercase}} </strong> </p>
+				
+		</div>
+		
+		<script src="https://code.angularjs.org/1.4.0/angular.js"></script>
+	    <script src="https://code.angularjs.org/1.4.0/angular-route.min.js"></script>
+	    <script src="app/app.module.js"></script>
+		<script src="app/poll/poll.controller.js"></script>
+	</body>
+</html>
