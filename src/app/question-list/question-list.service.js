@@ -8,40 +8,60 @@ angular.module('poll')
 			var deferred = $q.defer();
 			$http.get ('http://api.baasic.com/beta/mathos-ng/resources/pollquestion/')
 				.success (function (data) {
+					
+					function calcA (i) {
+						"use strict";
+					    return function () {
+					        data.item[i].totalA = data.item[i].totalA + 1;
+					    };	
+					};
+					
+					function calcB (i) {
+						"use strict";
+					    return function () {
+					        data.item[i].totalB = data.item[i].totalB + 1;
+					    };	
+					};
+					
+					function calcC (i) {
+						"use strict";
+					    return function () {
+					        data.item[i].totalC = data.item[i].totalC + 1;
+					    };	
+					};
+					
+					function calcWinner (i) {
+						"use strict";
+						return function() {
+							var sum = data.item[i].totalA + data.item[i].totalB + data.item[i].totalC;
+							if (sum == 0) {
+								return '';
+							};
+							
+							if (data.item[i].totalA > data.item[i].totalB && data.item[i].totalA > data.item[i].totalC) {
+								return data.item[i].answers[0].answer;
+							} else if (data.item[i].totalB > data.item[i].totalA && data.item[i].totalB > data.item[i].totalC) {
+								return data.item[i].answers[1].answer;
+							} else if (data.item[i].totalC > data.item[i].totalA && data.item[i].totalC > data.item[i].totalB) {
+								return data.item[i].answers[2].answer;
+							} else {
+								return "Answer tie!";	
+							};
+						};
+					}
+ 					
 					for (item in data.item) {
 						data.item[item].totalA = 0;
 						data.item[item].totalB = 0;
 						data.item[item].totalC = 0;
 						
-						data.item[item].winner = function() {
-							
-							var sum = data.item[item].totalA + data.item[item].totalB + data.item[item].totalC;
-							if (sum == 0) {
-								return '';
-							};
-							
-							if (data.item[item].totalA > data.item[item].totalB && data.item[item].totalA > data.item[item].totalC) {
-								return data.item[item].answers[0].answer;
-							} else if (data.item[item].totalB > data.item[item].totalA && data.item[item].totalB > data.item[item].totalC) {
-								return data.item[item].answers[1].answer;
-							} else if (data.item[item].totalC > data.item[item].totalA && data.item[item].totalC > data.item[item].totalB) {
-								return data.item[item].answers[2].answer;
-							} else {
-								return "Answer tie!";	
-							};
-						};
+						data.item[item].winner = calcWinner(item);
+												
+						data.item[item].optionA = calcA(item);
 						
-						data.item[item].optionA = function() {
-							data.item[item].totalA = data.item[item].totalA + 1;
-						};
+						data.item[item].optionB = calcB(item);
 						
-						data.item[item].optionB = function() {
-							data.item[item].totalB = data.item[item].totalB + 1;
-						};
-						
-						data.item[item].optionC = function() {
-							data.item[item].totalC = data.item[item].totalC + 1;
-						};
+						data.item[item].optionC = calcC(item);
 						
 						deferred.resolve(data.item);
 					}	
