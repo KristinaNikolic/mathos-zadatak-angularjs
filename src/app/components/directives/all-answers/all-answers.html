@@ -1,13 +1,13 @@
 <div class="vote">
 <button ng-click="optionA()">{{answerA}}</button>
 <button ng-click="optionB()">{{answerB}}</button>
-<button ng-click="optionC()">{{answerC}}</button>
+<button ng-if='answerC != ""' ng-click="optionC()">{{answerC}}</button>
 <br/>
 <br/>
 
 <p>Total votes "{{answerA}}" : {{totalA}}</p>
 <p>Total votes "{{answerB}}" : {{totalB}}</p>
-<p>Total votes "{{answerC}}" : {{totalC}}</p>
+<p ng-if='answerC != ""'>Total votes "{{answerC}}" : {{totalC}}</p>
 <p>Winning option :
 	<strong>{{winner() | uppercase}}</strong>
 </p>
