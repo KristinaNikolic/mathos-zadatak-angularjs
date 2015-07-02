@@ -7,13 +7,11 @@
 			scope : {
 				answerA: '@',
 				answerB: '@',
-				answerC: '@',
 				totalA: '@',
 				totalB: '@',
 				totalC: '@',
 				optionA: '&',
 				optionB: '&',
-				optionC: '&',
 				winner: '&'
 			},
 			templateUrl : 'app/components/directives/first-directive/first-directive.html'

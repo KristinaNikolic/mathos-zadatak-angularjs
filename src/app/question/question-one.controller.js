@@ -24,11 +24,11 @@ angular.module('poll')
 			};
 			
 			if ($scope.totalA > $scope.totalB && $scope.totalA > $scope.totalC) {
-				return $scope.answerA;
+				return $scope.answerA.answer;
 			} else if ($scope.totalB > $scope.totalA && $scope.totalB > $scope.totalC) {
-				return $scope.answerB;
+				return $scope.answerB.answer;
 			} else if ($scope.totalC > $scope.totalA && $scope.totalC > $scope.totalB) {
-				return $scope.answerC;
+				return $scope.answerC.answer;
 			} else {
 				return "Answer tie!";	
 			};
